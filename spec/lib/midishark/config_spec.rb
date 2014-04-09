@@ -17,4 +17,15 @@ describe Midishark::Config do
       expect(subject.tshark_command).to eq('tshark_command -ien0')
     end
   end
+
+  describe '#output_formatter' do
+    it "should have a default value" do
+      expect(subject.output_formatter).to eq(Midishark::Outputter::Streamy)
+    end
+
+    it "should be settable" do
+      subject.output_formatter = :haha
+      expect(subject.output_formatter).to eq(:haha)
+    end
+  end
 end

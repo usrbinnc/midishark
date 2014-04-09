@@ -1,6 +1,12 @@
 module Midishark
   class Config
     attr_accessor :tshark_command
+    attr_accessor :output_formatter
+
+    def initialize
+      # Set defaults.
+      self.output_formatter = Midishark::Outputter::Streamy
+    end
 
     # Public: creates a new Config object and yields it to the block.
     #
