@@ -1,0 +1,5 @@
+cfg = Midishark::Config.build do |config|
+  c.tshark_command = %Q{tshark -l -ien1 -o wlan.enable_decryption:TRUE -nn -Tfields -Eseparator="/t" -e ip.src -e ip.dst -e tcp.srcport -e tcp.dstport -e icmp.code}
+end
+
+Midishark::Cli.new(cfg).run!

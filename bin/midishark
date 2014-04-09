@@ -1,0 +1,11 @@
+#!/usr/bin/env ruby
+
+require 'midishark'
+
+file = ARGV.last
+
+if ARGV.size < 2 || !File.exist?(file)
+  abort "Usage: midishark [command] [path to config file]"
+end
+
+load(file)
