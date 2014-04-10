@@ -71,6 +71,11 @@ module Midishark
         min_duration + rand(max_duration - min_duration + 1)
       end
 
+      # Public: returns a random note as an Array of MIDI note values.
+      def random_note
+        notes[rand(notes.size)]
+      end
+
       # Public: adds a possible note to an instrument's bag of notes.
       def note(*note_names)
         midi_values = note_names.map { |name| Midishark::Notes.note(name) }

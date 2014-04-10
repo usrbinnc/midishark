@@ -15,6 +15,8 @@ require 'midishark/parser/base'
 require 'midishark/parser/basic'
 
 require 'midishark/transformer/result'
+require 'midishark/transformer/base'
+require 'midishark/transformer/mapped_client'
 
 require 'midishark/outputter/base'
 require 'midishark/outputter/streamy'

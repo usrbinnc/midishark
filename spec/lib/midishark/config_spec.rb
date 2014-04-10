@@ -55,6 +55,17 @@ describe Midishark::Config do
 end
 
 describe Midishark::Config::Instrument do
+  describe '#random_note' do
+    it "should return a random note from the bag of notes" do
+      subject.note 'A1'
+      subject.note 'B2'
+
+      100.times do
+        expect([[33], [47]]).to include(subject.random_note)
+      end
+    end
+  end
+
   describe '#random_duration' do
     it "should return a random duration bounded between [min, max]" do
       subject.min_duration 1
