@@ -5,6 +5,8 @@ module Midishark
         @config = config
       end
 
+      # Public: Takes an input line from wireshark and parses it into its various
+      # pieces.
       def parse(line)
         raise NotImplementedError, "please implement #parse in #{self.class}"
       end
