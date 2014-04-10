@@ -9,7 +9,7 @@ module Midishark
           parser_result.instrument,
           parser_result.velocity,
           parser_result.duration,
-          parser_result.tone
+          parser_result.tone.join(',')
         ].join(' ')
       end
     end

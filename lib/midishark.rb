@@ -22,4 +22,5 @@ require 'midishark/outputter/base'
 require 'midishark/outputter/streamy'
 
 require 'midishark/wireshark'
+require 'midishark/format'
 require 'midishark/cli'

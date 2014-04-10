@@ -8,7 +8,7 @@ describe Midishark::Outputter::Streamy do
         :instrument => 1,
         :velocity => 56,
         :duration => 4000,
-        :tone => 99
+        :tone => [99]
       )
     end
 

@@ -3,20 +3,19 @@ require 'ostruct'
 module Midishark
   module Parser
     class Basic < Base
-      @@starts_with_ip = /^\d{1,3}\./
+      @@ip_match = /\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}/
+      @@full_match = /^(#{@@ip_match})\s+(#{@@ip_match})\s+(\d+)\s+(\d+)$/
 
       # Public: Parses a basic input line in the format of:
       #
       #   <srcip> <dstip> <srcport> <dstport>
       def parse(line)
         line.strip!
-        return unless line =~ @@starts_with_ip
 
-        fields = line.split(/\s+/).compact
+        match = line.match(@@full_match)
+        return unless match
 
-        return unless fields.size >= 4
-
-        source_ip, destination_ip, source_port, destination_port = fields
+        source_ip, destination_ip, source_port, destination_port = match[1..4]
 
         OpenStruct.new(
           :source_ip => source_ip,
