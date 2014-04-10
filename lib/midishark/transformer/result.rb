@@ -1,5 +1,5 @@
 module Midishark
-  module Parser
+  module Transformer
     # instrument is a number between 0 and N
     # velocity is between 0 and 127
     # duration is in microseconds

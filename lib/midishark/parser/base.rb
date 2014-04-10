@@ -13,10 +13,6 @@ module Midishark
 
     private
 
-      def build_result(*args)
-        Midishark::Parser::Result.new(*args)
-      end
-
       def config
         @config
       end
