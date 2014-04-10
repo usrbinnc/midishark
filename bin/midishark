@@ -2,10 +2,14 @@
 
 require 'midishark'
 
-file = ARGV.last
-
-if ARGV.size < 2 || !File.exist?(file)
-  abort "Usage: midishark [command] [path to config file]"
+if ARGV.empty?
+  abort "Usage: midishark [command]"
 end
 
-load(file)
+config_file = File.expand_path("./Sharkfile")
+
+if !File.exist?(config_file)
+  abort "No Sharkfile found in the current directory."
+end
+
+load(config_file)

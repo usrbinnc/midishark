@@ -1,5 +1,15 @@
-cfg = Midishark::Config.build do |config|
-  c.tshark_command = %Q{tshark -l -ien1 -o wlan.enable_decryption:TRUE -nn -Tfields -Eseparator="/t" -e ip.src -e ip.dst -e tcp.srcport -e tcp.dstport -e icmp.code}
-end
+Midishark.configure do
+  tshark_command "tshark -l -ien1 -o wlan.enable_decryption:TRUE -nn "\
+                 "-Tfields -Eseparator=\"/t\" -e ip.src -e ip.dst "\
+                 "-e tcp.srcport -e tcp.dstport -e icmp.code"
 
-Midishark::Cli.new(cfg).run!
+  instrument do
+    device 0
+
+    min_duration 2000000
+    max_duration 4000000
+
+    note 'C3', 'E3', 'G3'
+    note 'A3'
+  end
+end

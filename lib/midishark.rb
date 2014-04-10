@@ -1,4 +1,10 @@
 module Midishark
+  # Public: creates a config object and runs in CLI mode.
+  def self.configure(&block)
+    config = Midishark::Config.build(&block)
+
+    Midishark::Cli.new(config, ARGV.dup).run!
+  end
 end
 
 require "midishark/version"

@@ -9,6 +9,8 @@ module Midishark
       case @args.first
       when 'capture'
         capture!
+      else
+        abort "Unknown command: #{@args.first}"
       end
     end
 
