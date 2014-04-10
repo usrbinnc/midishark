@@ -3,6 +3,7 @@ end
 
 require "midishark/version"
 require 'midishark/config'
+require 'midishark/notes'
 
 require 'midishark/parser/base'
 require 'midishark/parser/basic'
