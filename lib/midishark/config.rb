@@ -3,7 +3,9 @@ module Midishark
     attr_reader :instruments
 
     def initialize
-      formatter Midishark::Outputter::Streamy
+      parser Midishark::Parser::Basic
+      transformer Midishark::Transformer::MappedClient
+      outputter Midishark::Outputter::Streamy
 
       @instruments = []
     end
@@ -26,11 +28,27 @@ module Midishark
       instrument
     end
 
-    # Public: sets the klass of the formatter we want to use.
+    # Public: sets the class of the parser we want to use.
     #
-    #   formatter Midishark::Outputter::Streamy
+    #   parser Midishark::Parser::Basic
     #
-    def formatter(value = nil)
+    def parser(value = nil)
+      setget(:@parser, value)
+    end
+
+    # Public: sets the class of the transformer we want to use.
+    #
+    #   transformer Midishark::Transformer::MappedClient
+    #
+    def transformer(value = nil)
+      setget(:@transformer, value)
+    end
+
+    # Public: sets the class of the outputter we want to use.
+    #
+    #   outputter Midishark::Outputter::Streamy
+    #
+    def outputter(value = nil)
       setget(:@formatter, value)
     end
 

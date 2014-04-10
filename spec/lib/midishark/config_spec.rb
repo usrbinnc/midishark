@@ -11,6 +11,17 @@ describe Midishark::Config do
     end
   end
 
+  describe '#parser' do
+    it "should default to something" do
+      expect(subject.parser).to eq(Midishark::Parser::Basic)
+    end
+
+    it "should be settable" do
+      subject.parser(:foo)
+      expect(subject.parser).to eq(:foo)
+    end
+  end
+
   describe '#tshark_command' do
     it "should return a value for tshark_command if possible" do
       subject.tshark_command('tshark_command -ien0')
@@ -42,14 +53,26 @@ describe Midishark::Config do
     end
   end
 
-  describe '#formatter' do
+  describe '#transformer' do
     it "should have a default value" do
-      expect(subject.formatter).to eq(Midishark::Outputter::Streamy)
+      expect(subject.transformer).to eq(Midishark::Transformer::MappedClient)
     end
 
     it "should be settable" do
-      subject.formatter(:haha)
-      expect(subject.formatter).to eq(:haha)
+      subject.transformer(:haha)
+      expect(subject.transformer).to eq(:haha)
+    end
+  end
+
+
+  describe '#outputter' do
+    it "should have a default value" do
+      expect(subject.outputter).to eq(Midishark::Outputter::Streamy)
+    end
+
+    it "should be settable" do
+      subject.outputter(:haha)
+      expect(subject.outputter).to eq(:haha)
     end
   end
 end
